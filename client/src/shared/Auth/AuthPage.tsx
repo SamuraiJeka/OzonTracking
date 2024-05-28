@@ -10,7 +10,7 @@ const AuthPage:FC<AuthPageInterface> = ({type}) => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.wrapper__dataField}>
+            <form className={styles.wrapper__dataField}>
                 <h2 className={styles.appsName}>Apps Name</h2>
                 <div className={styles.wrapper__dataField__topSide}>
 
@@ -36,7 +36,7 @@ const AuthPage:FC<AuthPageInterface> = ({type}) => {
                         ? <Link className={styles.LinkText} to={"/registration"}>Нет аккаунта? Зарегистрируйся!</Link>
                         : <Link className={styles.LinkText} to={"/login"}>Есть аккаунт? Войди!</Link>}
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
