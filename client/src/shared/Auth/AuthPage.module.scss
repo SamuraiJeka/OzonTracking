@@ -1,0 +1,96 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #e8e8e8;
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.wrapper{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapper__dataField{
+  width: 450px;
+  height: 500px;
+  display: grid;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: -5px 2px 46px 1px #e8e8e8;
+}
+
+.wrapper__dataField__topSide{
+  width: 100%;
+  margin-top: 50px;
+  padding-right: 10px;
+  padding-left: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  height: 220px;
+
+}
+
+.wrapper__dataField__topSide__input{
+  width: 90%;
+  padding-left: 25px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+  font-size: 20px;
+  background-color: #fff;
+
+}
+
+.LinkText{
+  color: #002a65;
+  text-decoration: none;
+}
+
+.appsName{
+  margin-top: 20px;
+}
+
+.wrapper__dataField__centralSide{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.wrapper__dataField__centralSide__button{
+  width: fit-content;
+  padding: 10px;
+  height: 20px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  background-color: #fff;
+  box-shadow: 1px 2px 3px 1px #dadada;
+  transition: 0.12s;
+  }
+
+.wrapper__dataField__centralSide__button:hover{
+  color: #002a65;
+  transform: scale(1.1)
+}
+
