@@ -1,34 +1,72 @@
 import {FC} from "react";
 import styles from "./table.module.scss"
 
-interface TableInterface {
-    name: string;
-    minimumCount: number;
-    minimumPrice: number;
-    maximumPrice: number;
-    currentCount: number;
 
-}
-const Table:FC<TableInterface> = ({name, minimumCount, minimumPrice, maximumPrice}) => {
+const Table:FC = () => {
+
+    const testArray = [
+        {
+            name: "Check",
+            minimumCount: 1235,
+            minimumPrice: 2000,
+            maximumPrice: 2000,
+            currentCount: 125,
+        },
+        {
+            name: "Another",
+            minimumCount: 135,
+            minimumPrice: 2000,
+            maximumPrice: 2000,
+            currentCount: 125,
+        },{
+            name: "Check",
+            minimumCount: 15,
+            minimumPrice: 2000,
+            maximumPrice: 2000,
+            currentCount: 125,
+        },
+    ]
+
     return (
-        <table>
-            <thead>
-            <tr>
-                <th scope="col">Название</th>
-                <th scope="col">Минимальное количество</th>
-                <th scope="col">Минимальная цена</th>
-                <th scope="col">Максимальная цена</th>
-                <th scope="col">Склад</th>
-            </tr>
-            </thead>
+        <table className={styles.table}>
             <tbody>
-            <tr>
-                <th scope="row">OMNILYX</th>
-                <td><input/></td>
-                <td><input type="text"/></td>
-                <td><input type="text"/></td>
-                <td><input type="date"/></td>
-            </tr>
+            {testArray.map((item) => {
+                return (
+                    <tr>
+                        <td scope="row" className={styles.td}>
+                            <input type="checkbox"/>{item.name}
+                        </td>
+                        <td className={styles.td}>
+                            <p>Минимальное кол-во</p>
+                            <input
+                                className={styles.tableInput}
+                                defaultValue={item.minimumCount}
+                                type="text"/>
+                        </td>
+                        <td className={styles.td}>
+                            <p>Минимальная цена</p>
+                            <input
+                                className={styles.tableInput}
+                                defaultValue={item.minimumPrice}
+                                type="text"/>
+                        </td>
+                        <td className={styles.td}>
+                            <p>Максимальная цена</p>
+                            <input
+                                className={styles.tableInput}
+                                defaultValue={item.maximumPrice}
+                                type="text"/>
+                        </td>
+                        <td className={styles.td}>
+                            <p>Склад</p>
+                            <input
+                                className={styles.tableInput}
+                                defaultValue={item.currentCount}
+                                type="text"/>
+                        </td>
+                    </tr>
+                )
+            })}
             </tbody>
         </table>
     );
