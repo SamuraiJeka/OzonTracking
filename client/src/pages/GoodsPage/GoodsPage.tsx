@@ -1,11 +1,9 @@
-import Navbar from "../../widgets/Navbar/Navbar.tsx";
 import LeftNavbar from "../../widgets/LeftNavbar/LeftNavbar.tsx";
-import Table from "../../entity/ArrivalControlTable/table.tsx";
-import styles from "./MainPage.module.scss"
+import Table from "../../entity/GoodsTable/Table.tsx";
+import styles from "../MainPage/MainPage.module.scss";
+import Navbar from "../../widgets/Navbar/Navbar.tsx";
 
-const MainPage = () => {
-
-
+const GoodsPage = () => {
     return (
         <div className={styles.wrapper}>
             <LeftNavbar/>
@@ -19,4 +17,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default GoodsPage;
