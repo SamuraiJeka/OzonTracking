@@ -1,8 +1,21 @@
+from sqlalchemy.engine import create_engine
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from dotenv import load_dotenv, dotenv_values
-load_dotenv()
+from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
+from config import settings
 
-config = dotenv_values()
-engene = create_async_engine(config.get("db_url"))
+sync_engine = create_engine(
+    url=settings.DB_URL_psycopg,
+    echo=True
+)
 
-session = async_sessionmaker(engene, expire_on_commit=False)
+async_engine = create_async_engine(
+    url=settings.DB_URL_asyncpg,
+    echo=True
+)
+
+sync_session = sessionmaker(sync_engine)
+async_session = async_sessionmaker(async_engine)
+
+
+class Base(DeclarativeBase):
+    pass

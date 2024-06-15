@@ -1,5 +1,7 @@
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import String
+from sqlalchemy import MetaData, String
+
+metadata = MetaData()
 
 
 class Base(DeclarativeBase):
@@ -10,7 +12,6 @@ class Item(Base):
     __tablename__ = "item"
 
     offer_id: Mapped[int] = mapped_column(primary_key=True)
-    
 
 
 class User(Base):
@@ -18,4 +19,5 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     login: Mapped[str] = mapped_column(String(32),unique=True)
+    password: Mapped[str] 
 
