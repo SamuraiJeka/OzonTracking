@@ -1,4 +1,4 @@
-from sqlalchemy.engine import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
 from config import settings
@@ -18,4 +18,9 @@ async_session = async_sessionmaker(async_engine)
 
 
 class Base(DeclarativeBase):
-    pass
+      def __repr__(self):
+        cols = []
+        for idx, col in enumerate(self.__table__.columns.keys()):
+            cols.append(f"{col}={getattr(self, col)}")
+
+        return f"<{self.__class__.__name__} {', '.join(cols)}>"

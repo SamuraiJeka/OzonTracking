@@ -1,10 +1,16 @@
+import os
+import sys
+import asyncio
+from core import get_version, create_tables
 from fastapi import FastAPI
-from pydantic import BaseModel
-from core import get_version
+
+sys.path.insert(1, os.path.join(sys.path[0], ".."))
 
 app = FastAPI()
 
-get_version()
+# get_version()
+create_tables()
+
 
 
 
