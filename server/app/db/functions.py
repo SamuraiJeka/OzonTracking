@@ -1,4 +1,4 @@
-from database import sync_engine, async_engine, sync_session, async_session, Base
+from server.app.config.database.db_session import sync_engine, async_engine, sync_session, async_session, Base
 from sqlalchemy import text
 
 def get_version():
