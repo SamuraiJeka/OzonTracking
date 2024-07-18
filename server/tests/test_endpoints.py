@@ -5,4 +5,4 @@ def test_for_ci_1():
 
 
 def test_for_ci_2():
-    assert True
+    assert False
