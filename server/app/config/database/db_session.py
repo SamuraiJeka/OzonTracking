@@ -3,22 +3,16 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
 from server.app.config.database.config import settings
 
-sync_engine = create_engine(
-    url=settings.DB_URL_psycopg,
-    echo=True
-)
+sync_engine = create_engine(url=settings.DB_URL_psycopg, echo=True)
 
-async_engine = create_async_engine(
-    url=settings.DB_URL_asyncpg,
-    echo=True
-)
+async_engine = create_async_engine(url=settings.DB_URL_asyncpg, echo=True)
 
 sync_session = sessionmaker(sync_engine)
 async_session = async_sessionmaker(async_engine)
 
 
 class Base(DeclarativeBase):
-      def __repr__(self):
+    def __repr__(self):
         cols = []
         for idx, col in enumerate(self.__table__.columns.keys()):
             cols.append(f"{col}={getattr(self, col)}")

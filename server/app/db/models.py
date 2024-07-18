@@ -39,7 +39,9 @@ class User(Base):
     password: Mapped[str] = mapped_column(String(128))
 
     items: Mapped[list["Item"]] = relationship("Item", back_populates="user")
-    goods_lists: Mapped[list["GoodsList"]] = relationship("GoodsList", back_populates="user")
+    goods_lists: Mapped[list["GoodsList"]] = relationship(
+        "GoodsList", back_populates="user"
+    )
 
 
 class GoodsList(Base):
@@ -49,6 +51,3 @@ class GoodsList(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
 
     user: Mapped["User"] = relationship("User", back_populates="goods_lists")
-
-
-

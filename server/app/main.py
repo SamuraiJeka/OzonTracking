@@ -10,9 +10,3 @@ app = FastAPI()
 
 # get_version()
 create_tables()
-
-
-
-
-
-
