@@ -1,0 +1,27 @@
+.table {
+  border-collapse: collapse;
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 1120px;
+
+  .td {
+    border: 1px solid #e3e3e3;
+    padding: 8px 10px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    width: 200px;
+    height: 60px;
+  }
+}
+
+.tableInput{
+  width: 90%;
+  height: 26px;
+  border: 1px solid #b3b3b3;
+  padding: 5px;
+  outline: none;
+  border-radius: 6px;
+}

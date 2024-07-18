@@ -1,0 +1,25 @@
+
+
+.wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+
+.wrapper__mainField{
+  width: calc(100vw - 334px);
+}
+
+.wrapper__mainField__mainData{
+  width: 100%;
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.wrapper__mainField__mainData__table{
+  border-collapse: collapse;
+  border: 2px solid black
+}
