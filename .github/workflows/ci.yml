@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Poetry
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          cd server
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install
+      - name: Run flake8
+        run: |
+          cd server
+          poetry run flake8 app
+        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
+      - name: Run mypy
+        run: |
+          cd server
+          poetry run mypy app
+        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
+
+  test:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'pull_request' }}
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Poetry
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          cd server
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install
+      - name: Run pytest
+        run: |
+          cd server
+          poetry run pytest tests
+
