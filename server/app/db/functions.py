@@ -1,4 +1,4 @@
-from server.app.config.database.db_session import (
+from config.database.db_session import (
     sync_engine,
     async_engine,
     sync_session,
