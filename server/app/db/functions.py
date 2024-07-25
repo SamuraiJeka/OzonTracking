@@ -1,20 +1,14 @@
-from server.app.config.database.db_session import (
-    sync_engine,
-    async_engine,
-    sync_session,
-    async_session,
-    Base,
-)
-from sqlalchemy import text
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.db.models import User
 
 
-def get_version():
-    with sync_engine.connect() as conn:
-        res = conn.execute(text("SELECT VERSION()"))
-        print(res.one())
+async def get_user(session: AsyncSession) -> list[User]:
+    result = await session.execute(select(User))
+    return result.all()
 
 
-def create_tables():
-    Base.metadata.drop_all(sync_engine)
-    Base.metadata.create_all(sync_engine)
-    print("УБЕЙТЕ МЕНЯ!")
+async def add_user(session: AsyncSession, login: str, password: str):
+    new_user = User(login=login, password=password)
+    session.add(new_user)
+    return new_user

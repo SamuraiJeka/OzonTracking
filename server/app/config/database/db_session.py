@@ -1,13 +1,9 @@
-from sqlalchemy import create_engine, text
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
-from server.app.config.database.config import settings
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+from sqlalchemy.orm import DeclarativeBase
+from app.config.database.db_config import settings
 
-sync_engine = create_engine(url=settings.DB_URL_psycopg, echo=True)
 
 async_engine = create_async_engine(url=settings.DB_URL_asyncpg, echo=True)
-
-sync_session = sessionmaker(sync_engine)
 async_session = async_sessionmaker(async_engine)
 
 
@@ -18,3 +14,8 @@ class Base(DeclarativeBase):
             cols.append(f"{col}={getattr(self, col)}")
 
         return f"<{self.__class__.__name__} {', '.join(cols)}>"
+
+
+async def get_session() -> AsyncSession:
+    async with async_session() as session:
+        yield session
