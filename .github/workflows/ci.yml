@@ -30,7 +30,7 @@ jobs:
         run: |
           cd server
           poetry run flake8 app
-        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
+        # if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
       # - name: Run mypy
       #   run: |
       #     cd server
