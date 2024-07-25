@@ -2,8 +2,9 @@
 name = "server"
 version = "0.1.0"
 description = ""
-authors = ["Yura <borzikovu32@gmail.com>"]
+authors = ["Yura <borzikovu32@gmail.com>", "Roman <offissit123321@gmail.com>"]
 package-mode = false
+
 
 [tool.poetry.dependencies]
 python = "^3.11"
