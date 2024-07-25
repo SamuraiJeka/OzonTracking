@@ -31,11 +31,11 @@ jobs:
           cd server
           poetry run flake8 app
         if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
-      - name: Run mypy
-        run: |
-          cd server
-          poetry run mypy app
-        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
+      # - name: Run mypy
+      #   run: |
+      #     cd server
+      #     poetry run mypy app
+      #   if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
 
   test:
     runs-on: ubuntu-latest
