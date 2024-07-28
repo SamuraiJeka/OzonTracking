@@ -29,6 +29,19 @@ class Item(Base):
     quantity: Mapped[int]
 
     user: Mapped["User"] = relationship("User", back_populates="items")
+    goods_list: Mapped["GoodsList"] = relationship("GoodsList", back_populates="items")
+
+
+class Filter(Base):
+    __tablename__ = "filter"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    status: Mapped[bool]
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
+    brand: Mapped[str] = mapped_column(String(40))
+    min_cost: Mapped[int] = mapped_column(Numeric())
+
+    user: Mapped["User"] = relationship("User", back_populates="filters")
 
 
 class User(Base):
@@ -42,6 +55,7 @@ class User(Base):
     goods_lists: Mapped[list["GoodsList"]] = relationship(
         "GoodsList", back_populates="user"
     )
+    filters: Mapped[list["Filter"]] = relationship("Filter", back_populates="user")
 
 
 class GoodsList(Base):
@@ -50,4 +64,5 @@ class GoodsList(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
 
+    items: Mapped[list["Item"]] = relationship("Item", back_populates="goods_list")
     user: Mapped["User"] = relationship("User", back_populates="goods_lists")
